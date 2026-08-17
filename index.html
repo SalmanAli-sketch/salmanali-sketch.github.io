@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salman Ali | Java Backend Developer</title>
+<meta name="description" content="Salman Ali — Java Backend Developer and Computer Science undergraduate.">
+<style>
+:root{
+  --bg:#070b14;--bg2:#0b1020;--card:#0e1524;--card2:#111a2d;
+  --text:#f4f7ff;--muted:#aab4c8;--line:rgba(148,163,184,.18);
+  --blue:#4da3ff;--purple:#9b6cff;--cyan:#4de0c1;--yellow:#f7c843;
+  --pink:#ef6bff;--shadow:0 25px 80px rgba(0,0,0,.28);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:85px}
+body{
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--text);background:
+  radial-gradient(circle at 77% 18%,rgba(98,87,255,.12),transparent 25%),
+  radial-gradient(circle at 18% 45%,rgba(36,129,255,.07),transparent 28%),
+  linear-gradient(135deg,var(--bg),var(--bg2));
+  overflow-x:hidden;
+}
+body:before{
+ content:"";position:fixed;inset:0;pointer-events:none;opacity:.26;
+ background-image:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),
+ linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
+ background-size:58px 58px;
+ mask-image:linear-gradient(to bottom,black 10%,transparent 90%);
+}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+.container{width:min(1210px,calc(100% - 42px));margin:auto}
+.progress{position:fixed;z-index:100;top:0;left:0;width:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--purple),var(--pink))}
+header{height:78px;position:relative;z-index:20}
+nav{height:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:28px;font-weight:850;letter-spacing:-1.5px}
+.logo span{color:var(--blue)}
+.navlinks{display:flex;align-items:center;gap:32px;color:#e1e5ee;font-size:15px}
+.navlinks a{position:relative;padding:30px 0}
+.navlinks a:after{content:"";position:absolute;left:50%;bottom:18px;width:5px;height:5px;border-radius:50%;background:var(--blue);transform:translateX(-50%) scale(0);transition:.2s}
+.navlinks a:hover,.navlinks a.active{color:#69adff}
+.navlinks a.active:after{transform:translateX(-50%) scale(1)}
+.resume{border:1px solid #4c5d77;border-radius:12px;padding:12px 21px;transition:.25s}
+.resume:hover{border-color:var(--blue);box-shadow:0 0 25px rgba(77,163,255,.12)}
+.menu{display:none;background:none;border:1px solid var(--line);color:white;border-radius:9px;padding:8px 11px}
+.hero{min-height:530px;display:grid;grid-template-columns:1fr .8fr;align-items:center;gap:30px;padding:62px 0 50px}
+.eyebrow{color:#65aaff;letter-spacing:3px;font-size:14px;font-weight:700;margin-bottom:24px}
+h1{font-size:clamp(58px,7vw,91px);line-height:.94;letter-spacing:-5px}
+.gradient{background:linear-gradient(90deg,#39a2ff,#8d66ff,#d25cf5);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-copy{color:#c2cada;font-size:18px;line-height:1.7;max-width:620px;margin:25px 0 28px}
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 21px;border-radius:10px;border:1px solid #40516b;background:rgba(255,255,255,.025);transition:.25s}
+.btn.primary{border:0;background:linear-gradient(100deg,#3d9eff,#805cf1);box-shadow:0 12px 30px rgba(72,114,255,.2)}
+.btn:hover{transform:translateY(-3px)}
+.hero-art{min-height:370px;display:grid;place-items:center;position:relative}
+.avatar{
+ width:285px;height:285px;border:1px solid #7890ff;border-radius:50%;
+ display:grid;place-items:center;position:relative;
+ box-shadow:0 0 85px rgba(74,112,255,.2),0 0 150px rgba(155,108,255,.1);
+}
+.avatar:before,.avatar:after{content:"";position:absolute;border-radius:50%;border:1px solid rgba(95,137,255,.2)}
+.avatar:before{inset:-34px}.avatar:after{inset:28px;border-color:rgba(155,108,255,.2)}
+.person{font-size:108px;color:#7890ff;filter:drop-shadow(0 0 18px rgba(96,120,255,.4))}
+.float{position:absolute;border:1px solid var(--line);background:rgba(10,15,28,.75);backdrop-filter:blur(10px);padding:9px 13px;border-radius:9px;font-size:12px;color:#dce4f5}
+.f1{top:13%;left:8%;color:#70b6ff}.f2{right:5%;top:26%;color:#b89aff}.f3{bottom:14%;left:13%;color:#55e1c0}
+.section{padding:78px 0}
+.panel{border:1px solid var(--line);background:linear-gradient(145deg,rgba(17,25,42,.78),rgba(10,15,27,.72));border-radius:13px;box-shadow:var(--shadow)}
+.about{display:grid;grid-template-columns:330px 1fr;gap:40px;padding:30px}
+.section-head{display:flex;align-items:flex-start;gap:18px}
+.section-icon{width:55px;height:55px;border-radius:50%;display:grid;place-items:center;background:rgba(87,116,255,.14);color:#66aaff;font-size:25px;flex:none}
+.title h2{font-size:32px;letter-spacing:-1px}.under{width:42px;height:3px;background:#619eff;margin-top:10px}
+.about-text{font-size:17px;color:#c3cbda;line-height:1.75;padding-top:3px}
+.muted{color:var(--muted)}
+.skills-title{display:flex;justify-content:space-between;align-items:end;margin-bottom:22px}
+.heading{font-size:32px;letter-spacing:-1px}
+.heading-row{display:flex;gap:17px;align-items:center}
+.small-btn{border:1px solid var(--line);padding:10px 17px;border-radius:10px;color:#66adff}
+.skill-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:17px}
+.skill-card{min-height:190px;padding:22px;border:1px solid var(--line);background:rgba(14,21,36,.72);border-radius:10px;transition:.3s}
+.skill-card:hover{transform:translateY(-5px);border-color:rgba(90,148,255,.45)}
+.skill-card h3{font-size:16px;margin-bottom:22px}.dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:8px}
+.blue{background:#428fff}.purple{background:#9568ff}.green{background:#44d9ba}.yellow{background:#f3c43b}
+.skill-card ul{list-style:none;color:#c3ccdc;line-height:2;font-size:14px}
+.learning{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.learn-card{padding:25px;border:1px solid var(--line);border-radius:13px;background:rgba(13,19,34,.72)}
+.learn-card.current{border-color:rgba(155,108,255,.34)}
+.learn-card.upcoming{border-color:rgba(77,163,255,.25)}
+.learn-top{display:flex;justify-content:space-between;gap:15px;margin-bottom:18px}
+.learn-top h3{font-size:21px}.status{font-size:11px;padding:6px 10px;border-radius:999px;background:rgba(155,108,255,.12);color:#bfa5ff}
+.upcoming .status{background:rgba(77,163,255,.11);color:#75b9ff}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{font-size:13px;color:#d5dbea;background:rgba(255,255,255,.045);padding:8px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.06)}
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.project{padding:27px;min-height:265px;position:relative;overflow:hidden}
+.project:before{content:"";position:absolute;width:170px;height:170px;border-radius:50%;right:-80px;top:-90px;background:rgba(104,102,255,.09);filter:blur(5px)}
+.project-top{display:flex;justify-content:space-between;gap:10px}.project h3{font-size:23px}
+.tag{font-size:11px;padding:6px 9px;border:1px solid rgba(77,163,255,.3);border-radius:20px;color:#72b5ff;white-space:nowrap}
+.project p{color:#aeb8ca;line-height:1.7;margin:15px 0 20px;font-size:14px}
+.project a{display:inline-block;margin-top:19px;color:#68acff;font-size:14px}
+.timeline{position:relative;margin-top:30px;padding-left:28px}
+.timeline:before{content:"";position:absolute;left:7px;top:5px;bottom:5px;width:1px;background:#34415a}
+.step{position:relative;margin-bottom:28px}.step:before{content:"";position:absolute;left:-25px;top:4px;width:10px;height:10px;border-radius:50%;background:#599cff;box-shadow:0 0 14px rgba(89,156,255,.5)}
+.step h3{font-size:18px}.step p{color:var(--muted);margin-top:6px;font-size:14px;line-height:1.6}
+.contact{padding:40px;display:flex;justify-content:space-between;align-items:center;gap:30px}
+.contact h2{font-size:38px;letter-spacing:-1.5px}.contact p{color:var(--muted);line-height:1.7;margin-top:10px}
+.contact-links{display:flex;gap:10px;flex-wrap:wrap}
+footer{border-top:1px solid var(--line);padding:30px 0;color:#7e899e;font-size:13px}
+.reveal{opacity:0;transform:translateY(25px);transition:.7s ease}.reveal.show{opacity:1;transform:none}
+#backTop{position:fixed;right:24px;bottom:24px;width:43px;height:43px;border-radius:50%;border:1px solid var(--line);background:#101827;color:white;display:none;z-index:30;cursor:pointer}
+@media(max-width:1000px){.skill-grid{grid-template-columns:repeat(3,1fr)}.navlinks{gap:20px}.hero{grid-template-columns:1fr}.hero-art{display:none}}
+@media(max-width:720px){
+ .container{width:min(100% - 28px,1210px)}header{height:70px}
+ .navlinks{display:none;position:absolute;top:70px;left:0;right:0;padding:14px;background:#0b1120;border:1px solid var(--line);border-radius:12px;flex-direction:column;gap:0}
+ .navlinks.open{display:flex}.navlinks a{padding:13px 15px}.navlinks a:after{display:none}.menu{display:block}
+ .resume{display:none}.hero{padding:55px 0 40px}.hero-copy{font-size:16px}h1{font-size:57px;letter-spacing:-3.5px}
+ .about{grid-template-columns:1fr;padding:24px}.skill-grid{grid-template-columns:1fr 1fr}.learning,.projects{grid-template-columns:1fr}
+ .contact{padding:27px;display:block}.contact h2{font-size:32px}.contact-links{margin-top:22px}
+}
+@media(max-width:450px){.skill-grid{grid-template-columns:1fr}.actions .btn{width:100%;justify-content:center}}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="container">
+<nav>
+ <a href="#home" class="logo">Salman<span>.</span></a>
+ <div class="navlinks" id="nav">
+  <a class="active" href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a>
+  <a href="#projects">Projects</a><a href="#learning">Currently Learning</a><a href="#contact">Contact</a>
+ </div>
+ <div style="display:flex;gap:10px;align-items:center"><a class="resume" href="Salman_Ali_Resume.pdf" download="Salman_Ali_Resume.pdf">↓ &nbsp;Resume</a><button class="menu" onclick="toggleMenu()">☰</button></div>
+</nav>
+</header>
+
+<main>
+<section id="home" class="container hero">
+ <div class="reveal">
+  <div class="eyebrow">JAVA DEVELOPER &amp; CS STUDENT</div>
+  <h1>Hi, I'm<br><span class="gradient">Salman Ali</span></h1>
+  <p class="hero-copy">Computer Science (AI-ML) student with a strong foundation in Core Java, databases, and backend development. I enjoy building Java applications, working with data, and continuously expanding my skills toward modern backend engineering.</p>
+  <div class="actions">
+   <a class="btn primary" href="#projects">View My Work <span>›</span></a>
+   <a class="btn" href="https://github.com/SalmanAli-sketch" target="_blank">◉ &nbsp;GitHub</a>
+   <a class="btn" href="https://www.linkedin.com/in/salman-ali-36390330a" target="_blank">in &nbsp;LinkedIn</a>
+  </div>
+ </div>
+ <div class="hero-art reveal">
+  <div class="avatar"><div class="person">♟</div></div>
+  <div class="float f1">Java Backend</div><div class="float f2">Spring Boot →</div><div class="float f3">Building &amp; Learning</div>
+ </div>
+</section>
+
+<section id="about" class="container section reveal">
+ <div class="panel about">
+  <div class="section-head">
+   <div class="section-icon">♙</div>
+   <div class="title"><h2>About Me</h2><div class="under"></div></div>
+  </div>
+  <div class="about-text">
+   I am a Computer Science (AI-ML) student with a strong foundation in <b>Java, C++, databases and problem solving</b>.
+   My primary goal is to become a strong Java backend engineer. I enjoy understanding how software works internally,
+   building backend applications, practicing DSA, and continuously learning technologies that move me toward real-world production systems.
+  </div>
+ </div>
+</section>
+
+<section id="skills" class="container section reveal">
+ <div class="skills-title">
+  <div class="heading-row"><div class="section-icon">‹/›</div><div><div class="heading">Skills</div><div class="under"></div></div></div>
+  <a class="small-btn" href="#learning">View Learning Path →</a>
+ </div>
+ <div class="skill-grid">
+  <div class="skill-card"><h3><span class="dot blue"></span>Programming Languages</h3><ul><li>☕ Java</li><li>⚙ C++</li></ul></div>
+  <div class="skill-card"><h3><span class="dot purple"></span>Core Java</h3><ul><li>• OOP</li><li>• Collections Framework</li><li>• Exception Handling</li><li>• Generics</li><li>• Multithreading</li><li>• Java 8</li></ul></div>
+  <div class="skill-card"><h3><span class="dot green"></span>Databases</h3><ul><li>▣ SQL</li><li>🐘 PostgreSQL</li><li>▣ MySQL</li><li>🍃 MongoDB</li><li>ↄ JDBC</li></ul></div>
+  <div class="skill-card"><h3><span class="dot yellow"></span>Development Tools</h3><ul><li>• Git &amp; GitHub</li><li>• IntelliJ IDEA</li><li>• Visual Studio</li><li>• pgAdmin</li><li>• MongoDB Compass</li></ul></div>
+  <div class="skill-card"><h3><span class="dot purple"></span>CS &amp; DSA</h3><ul><li>• DBMS</li><li>• Operating Systems</li><li>• Computer Networks</li><li>• C++ STL</li><li>• Basic DSA</li></ul></div>
+</div>
+</section>
+
+<section id="learning" class="container section reveal">
+ <div class="heading-row" style="margin-bottom:24px"><div class="section-icon">⌁</div><div><div class="heading">Currently Learning</div><div class="under"></div></div></div>
+ <div class="learning">
+  <div class="learn-card current">
+   <div class="learn-top"><h3>Currently Learning</h3><span class="status">IN PROGRESS</span></div>
+   <div class="chips"><span class="chip">Spring</span><span class="chip">Spring Boot</span><span class="chip">REST APIs</span></div>
+  </div>
+  <div class="learn-card upcoming">
+   <div class="learn-top"><h3>Next on My Roadmap</h3><span class="status">UPCOMING</span></div>
+   <div class="chips"><span class="chip">Docker</span><span class="chip">AWS</span><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">React</span><span class="chip">Microservices</span></div>
+  </div>
+ </div>
+</section>
+
+<section id="projects" class="container section reveal">
+ <div class="heading-row" style="margin-bottom:24px"><div class="section-icon">⌘</div><div><div class="heading">Projects</div><div class="under"></div></div></div>
+ <div class="projects">
+  <article class="panel project"><div class="project-top"><h3>Banking Transaction System</h3><span class="tag">Java + DB</span></div><p>Console-based banking application for account creation, deposits, withdrawals, balance enquiry, database-backed account management, transaction logging, and thread-safe transaction handling.</p><div class="chips"><span class="chip">Core Java</span><span class="chip">JDBC</span><span class="chip">MySQL</span><span class="chip">File Handling</span><span class="chip">Multithreading</span></div><a href="https://github.com/SalmanAli-sketch/online-banking-transaction-system/tree/main/Online-banking-transaction-system-java--main" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a></article>
+  <article class="panel project"><div class="project-top"><h3>Stock Trading Simulator</h3><span class="tag">Java</span></div><p>Application simulating stock trading workflows and transaction operations, using OOP, Java Collections, modular design, and buying/selling logic.</p><div class="chips"><span class="chip">Java</span><span class="chip">OOP</span><span class="chip">Collections</span></div><a href="https://github.com/SalmanAli-sketch/stock-trading-simulator" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a></article>
+  <article class="panel project"><div class="project-top"><h3>Student Management System</h3><span class="tag">Core Java</span></div><p>Console-based student management application implementing CRUD operations, input validation, duplicate ID checks, Collections, OOP, and custom exception handling.</p><div class="chips"><span class="chip">Java</span><span class="chip">OOP</span><span class="chip">Collections</span><span class="chip">Exception Handling</span></div><a href="https://github.com/SalmanAli-sketch/Student-Management-System/tree/main/java-student-management-system-main" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a></article>
+ </div>
+</section>
+
+<section class="container section reveal">
+ <div class="heading-row" style="margin-bottom:24px"><div class="section-icon">↗</div><div><div class="heading">My Learning Journey</div><div class="under"></div></div></div>
+ <div class="panel" style="padding:30px">
+  <div class="timeline">
+   <div class="step"><h3>Core Java Foundation</h3><p>Core Java, OOP, Collections Framework, Exception Handling, Generics, Multithreading and Java 8.</p></div>
+   <div class="step"><h3>Database &amp; JDBC</h3><p>SQL, PostgreSQL, MySQL, MongoDB and JDBC with hands-on database-integrated Java applications.</p></div>
+   <div class="step"><h3>Currently Learning: Spring</h3><p>Expanding backend development skills with Spring, Spring Boot and REST APIs.</p></div>
+   <div class="step"><h3>Upcoming</h3><p>Docker, AWS and modern frontend technologies including HTML, CSS, JavaScript and React, followed by deeper backend architecture.</p></div>
+  </div>
+ </div>
+</section>
+
+<section id="contact" class="container section reveal">
+ <div class="panel contact">
+  <div><h2>Let's connect.</h2><p>Interested in backend development, internships, projects or technology? Feel free to reach out.</p></div>
+  <div class="contact-links">
+   <a class="btn primary" href="mailto:salman.9651.ali@gmail.com">✉ Email Me</a>
+   <a class="btn" href="https://github.com/SalmanAli-sketch" target="_blank">GitHub</a>
+   <a class="btn" href="https://www.linkedin.com/in/salman-ali-36390330a" target="_blank">LinkedIn</a>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer><div class="container">© 2026 Salman Ali · Java Backend Developer · B.Tech CS (AI-ML) (2023–2027)</div></footer>
+<button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+function toggleMenu(){document.getElementById('nav').classList.toggle('open')}
+
+const progress=document.getElementById('progress');
+const back=document.getElementById('backTop');
+window.addEventListener('scroll',()=>{
+ const max=document.documentElement.scrollHeight-innerHeight;
+ progress.style.width=(scrollY/max*100)+'%';
+ back.style.display=scrollY>500?'grid':'none';
+});
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(x=>obs.observe(x));
+const sections=[...document.querySelectorAll('main section[id]')], links=[...document.querySelectorAll('.navlinks a')];
+window.addEventListener('scroll',()=>{
+ let current='home';
+ sections.forEach(s=>{if(scrollY>=s.offsetTop-150)current=s.id});
+ links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+current));
+});
+links.forEach(a=>a.addEventListener('click',()=>document.getElementById('nav').classList.remove('open')));
+</script>
+</body>
+</html>
