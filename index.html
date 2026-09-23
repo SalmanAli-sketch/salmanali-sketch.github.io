@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salman Ali | SOFTWARE DEVELOPER</title>
+<meta name="description" content="Salman Ali — Software Developer and B.Tech CS (AI-ML) student.">
+<style>
+:root{
+ --bg:#050914;--bg2:#08101e;--surface:#0b1322;--surface2:#0e1829;
+ --text:#f5f7fb;--muted:#9ba8bc;--line:rgba(150,170,205,.16);
+ --blue:#63a9ff;--blue2:#3b82f6;--violet:#9b7cff;--cyan:#53dfc1;
+ --green:#48d597;--shadow:0 28px 90px rgba(0,0,0,.32);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{
+ font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+ color:var(--text);background:
+ radial-gradient(circle at 80% 0%,rgba(92,90,255,.13),transparent 26%),
+ radial-gradient(circle at 5% 28%,rgba(55,145,255,.08),transparent 24%),
+ linear-gradient(135deg,var(--bg),var(--bg2) 55%,#050a14);
+ overflow-x:hidden;
+}
+body:before{
+ content:"";position:fixed;inset:0;pointer-events:none;z-index:-2;
+ background-image:linear-gradient(rgba(130,160,210,.025) 1px,transparent 1px),
+ linear-gradient(90deg,rgba(130,160,210,.025) 1px,transparent 1px);
+ background-size:52px 52px;
+ mask-image:linear-gradient(to bottom,black,transparent 85%);
+}
+body:after{
+ content:"";position:fixed;width:360px;height:360px;border-radius:50%;
+ left:var(--mx,50%);top:var(--my,20%);transform:translate(-50%,-50%);
+ background:radial-gradient(circle,rgba(80,140,255,.075),transparent 68%);
+ pointer-events:none;z-index:-1;transition:left .2s ease,top .2s ease;
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.container{width:min(1180px,calc(100% - 40px));margin:auto}
+.progress{position:fixed;left:0;top:0;width:0;height:3px;z-index:9999;background:linear-gradient(90deg,var(--blue),var(--violet),#d477ff);box-shadow:0 0 18px rgba(99,169,255,.55)}
+header{
+ position:sticky;top:0;z-index:100;height:76px;
+ background:rgba(5,9,20,.72);backdrop-filter:blur(18px);
+ border-bottom:1px solid rgba(150,170,205,.09);
+}
+nav{height:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:23px;font-weight:850;letter-spacing:-.8px}
+.logo b{color:var(--blue)}
+.navlinks{display:flex;gap:28px;align-items:center;color:#c3cddd;font-size:13px}
+.navlinks a{position:relative;padding:29px 0;transition:.25s}
+.navlinks a:hover,.navlinks a.active{color:white}
+.navlinks a.active:after{
+ content:"";position:absolute;left:0;right:0;bottom:18px;height:2px;border-radius:9px;
+ background:linear-gradient(90deg,var(--blue),var(--violet));box-shadow:0 0 12px rgba(99,169,255,.6)
+}
+.resume,.menu{
+ border:1px solid rgba(99,169,255,.4);background:rgba(99,169,255,.06);
+ color:#eaf2ff;border-radius:10px;padding:10px 15px;transition:.25s
+}
+.resume:hover{transform:translateY(-2px);border-color:var(--blue);box-shadow:0 0 25px rgba(70,140,255,.15)}
+.menu{display:none}
+
+.hero{min-height:650px;display:grid;grid-template-columns:1.08fr .92fr;gap:60px;align-items:center;padding:76px 0 72px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;color:#82baff;font-size:11px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;margin-bottom:22px}
+.eyebrow:before{content:"";width:26px;height:1px;background:var(--blue)}
+.hero h1{font-size:clamp(55px,7vw,86px);line-height:.92;letter-spacing:-5px}
+.hero h1 .gradient{background:linear-gradient(100deg,#fff 15%,#68adff 52%,#a77cff 88%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.role{margin-top:19px;font-size:20px;font-weight:650;color:#e5eaf3}
+.role span{color:var(--blue)}
+.hero-copy{max-width:650px;margin:22px 0 28px;color:#aeb9cc;font-size:16px;line-height:1.8}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:12px 17px;border:1px solid #31435e;border-radius:10px;background:rgba(255,255,255,.025);font-size:13px;font-weight:700;transition:.28s}
+.btn:hover{transform:translateY(-3px);border-color:#6389c4;box-shadow:0 14px 35px rgba(0,0,0,.22)}
+.btn.primary{border-color:transparent;background:linear-gradient(105deg,#478fff,#7d5af0);box-shadow:0 12px 30px rgba(76,108,240,.22)}
+.socials{display:flex;gap:18px;margin-top:22px;color:#8fa2bd;font-size:13px}
+.socials a:hover{color:white}
+
+.hero-visual{position:relative;min-height:410px;display:grid;place-items:center}
+.code-window{
+ width:min(430px,100%);border:1px solid rgba(110,145,210,.27);border-radius:18px;
+ background:linear-gradient(145deg,rgba(15,27,48,.9),rgba(7,13,25,.94));
+ box-shadow:0 35px 100px rgba(0,0,0,.4),0 0 65px rgba(76,105,255,.08);
+ overflow:hidden;transform:rotate(2deg);transition:.5s
+}
+.code-window:hover{transform:rotate(0) translateY(-7px);box-shadow:0 40px 110px rgba(0,0,0,.46),0 0 70px rgba(76,105,255,.14)}
+.window-bar{height:44px;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 15px;gap:7px}
+.window-dot{width:8px;height:8px;border-radius:50%;background:#55647b}
+.window-title{margin-left:8px;color:#6f819c;font-size:11px}
+.code{padding:25px 24px 27px;font:13px/2.05 "SFMono-Regular",Consolas,monospace;color:#b7c4d9}
+.code .key{color:#76b4ff}.code .value{color:#c19cff}.code .string{color:#58d8bd}.code .comment{color:#61738d}
+.visual-badge{
+ position:absolute;padding:10px 13px;border:1px solid var(--line);background:rgba(10,18,32,.86);
+ backdrop-filter:blur(12px);border-radius:11px;font-size:11px;color:#dce6f6;box-shadow:var(--shadow)
+}
+.badge-a{top:9%;left:0;color:#77b7ff}.badge-b{right:0;top:29%;color:#bba2ff}.badge-c{left:7%;bottom:9%;color:#63e0c0}
+.orbit{position:absolute;width:470px;height:470px;border:1px solid rgba(90,130,255,.12);border-radius:50%;animation:spin 24s linear infinite}
+.orbit:before{content:"";position:absolute;left:50%;top:-5px;width:9px;height:9px;border-radius:50%;background:var(--blue);box-shadow:0 0 20px var(--blue)}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.section{padding:76px 0}
+.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:25px}
+.kicker{font-size:10px;font-weight:800;letter-spacing:1.8px;color:#6eaaff;text-transform:uppercase;margin-bottom:7px}
+h2{font-size:34px;letter-spacing:-1.3px}
+.under{height:3px;width:43px;margin-top:10px;background:linear-gradient(90deg,var(--blue),var(--violet));border-radius:99px}
+.section-note{color:#8492a8;font-size:13px;max-width:520px;line-height:1.6}
+
+.about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:20px}
+.card{
+ border:1px solid var(--line);border-radius:15px;background:linear-gradient(145deg,rgba(13,23,40,.86),rgba(8,14,26,.88));
+ box-shadow:var(--shadow);transition:.35s
+}
+.card:hover{transform:translateY(-5px);border-color:rgba(99,169,255,.28)}
+.about-card{padding:28px}
+.about-card p{color:#aeb9cc;line-height:1.85;font-size:15px}
+.about-card p+p{margin-top:12px}
+.fact-list{padding:22px}
+.fact{display:grid;grid-template-columns:105px 1fr;gap:14px;padding:13px 0;border-bottom:1px solid rgba(150,170,205,.08);font-size:13px}
+.fact:last-child{border-bottom:0}
+.fact strong{color:#e8edf6}.fact span{color:#99a8bd}
+
+.skills-wrap{padding:25px}
+.skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.skill-box{padding:20px;border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.018)}
+.skill-box h3{font-size:14px;margin-bottom:14px}
+.skill-list{display:flex;flex-wrap:wrap;gap:7px}
+.skill-list span{
+ padding:7px 9px;border:1px solid rgba(150,170,205,.13);border-radius:7px;
+ color:#bfc9d9;background:rgba(255,255,255,.025);font-size:11px
+}
+.skill-box:nth-child(2) h3{color:#9f86ff}.skill-box:nth-child(3) h3{color:#65d9bf}
+.skill-box:nth-child(4) h3{color:#6eafff}.skill-box:nth-child(5) h3{color:#d6ae6c}.skill-box:nth-child(6) h3{color:#b8a1ff}
+
+.learning-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
+.learning{padding:27px}
+.learning.current{border-color:rgba(143,111,255,.38);box-shadow:0 0 55px rgba(113,85,255,.06)}
+.learning-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:16px}
+.status{font-size:9px;font-weight:800;letter-spacing:1px;padding:6px 9px;border-radius:99px;border:1px solid rgba(151,115,255,.28);color:#b69dff;background:rgba(151,115,255,.08)}
+.learning h3{font-size:22px;margin-bottom:9px}
+.learning p{color:#a5b1c4;font-size:14px;line-height:1.75}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}.tags span{padding:7px 10px;border-radius:7px;background:rgba(255,255,255,.035);border:1px solid var(--line);font-size:11px;color:#c8d2e3}
+.focus{margin-top:20px}.focus-head{display:flex;justify-content:space-between;font-size:10px;color:#8493aa;margin-bottom:7px}
+.bar{height:5px;border-radius:99px;background:#172236;overflow:hidden}.bar span{display:block;width:62%;height:100%;background:linear-gradient(90deg,var(--blue),var(--violet))}
+.roadmap{display:grid;gap:11px;margin-top:18px}.roadmap div{font-size:12px;color:#b9c5d7;display:flex;gap:10px;align-items:center}.roadmap i{width:6px;height:6px;border-radius:50%;background:var(--blue);box-shadow:0 0 12px rgba(99,169,255,.55)}
+
+.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.project{padding:22px;min-height:275px;display:flex;flex-direction:column}
+.project-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.project-num{font:11px "SFMono-Regular",Consolas,monospace;color:#6f87a7}
+.project-type{font-size:9px;font-weight:800;letter-spacing:1px;color:#75adff;border:1px solid rgba(99,169,255,.22);padding:6px 8px;border-radius:99px}
+.project h3{font-size:19px;margin-bottom:10px}.project p{font-size:13px;color:#9eacc0;line-height:1.7}
+.project .tags{margin-top:auto}.project-link{margin-top:18px;color:#77b3ff;font-size:12px;font-weight:750}.project-link:hover{text-decoration:underline}
+
+.journey{border:1px solid var(--line);border-radius:17px;overflow:hidden;background:rgba(8,15,28,.55)}
+.journey-intro{padding:27px 28px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:30px}
+.journey-intro p{max-width:650px;color:#9eacbf;font-size:14px;line-height:1.7}
+.quote{max-width:270px;color:#cdd6e5;font-size:12px;line-height:1.6;text-align:right}
+.quote b{display:block;color:#73adff;margin-bottom:4px}
+.journey-row{display:grid;grid-template-columns:65px 1fr 265px;gap:20px;padding:28px;border-bottom:1px solid rgba(150,170,205,.09);position:relative}
+.journey-row:last-child{border-bottom:0}
+.journey-row:before{content:"";position:absolute;left:31px;top:65px;bottom:-1px;width:1px;background:linear-gradient(var(--blue),rgba(140,110,255,.12))}
+.journey-row:last-child:before{display:none}
+.journey-icon{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;border:1px solid rgba(99,169,255,.3);background:rgba(80,135,255,.08);color:#75b2ff;z-index:1}
+.journey-meta{display:flex;align-items:center;gap:10px;margin-bottom:8px}.journey-index{font:11px "SFMono-Regular",Consolas,monospace;color:#6eafff}.journey-stage{text-transform:uppercase;font-size:9px;font-weight:800;letter-spacing:1.3px;color:#8fa8ca}
+.journey-main h3{font-size:19px;margin-bottom:8px}.journey-main p{color:#9eabbe;font-size:13px;line-height:1.7;max-width:650px}
+.journey-status{border-left:1px solid var(--line);padding-left:20px}.status-done{color:var(--green)}.status-progress{color:#b18eff}.status-next{color:#7aaeff}
+.checks{display:grid;gap:7px;margin-top:10px;font-size:11px;color:#9aa9bd}.checks .done{color:#78dfbd}.checks .active{color:#b8a1ff}
+
+.contact{
+ padding:35px;display:flex;justify-content:space-between;align-items:center;gap:30px;
+ border:1px solid rgba(108,129,255,.3);
+ background:radial-gradient(circle at 90% 50%,rgba(122,91,255,.17),transparent 35%),linear-gradient(135deg,rgba(15,24,43,.95),rgba(8,14,27,.95));
+}
+.contact h2{font-size:31px}.contact p{color:#9eacc0;font-size:14px;margin-top:8px}.contact-actions{display:flex;gap:9px;flex-wrap:wrap}
+
+footer{border-top:1px solid var(--line);padding:27px 0;color:#718198;font-size:11px}
+.footer-inner{display:flex;justify-content:space-between;gap:20px}.footer-links{display:flex;gap:17px}.footer-links a:hover{color:white}
+#top{position:fixed;right:22px;bottom:22px;width:40px;height:40px;border-radius:50%;display:none;place-items:center;border:1px solid var(--line);background:#0d1728;color:white;z-index:80;cursor:pointer}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}.reveal.show{opacity:1;transform:none}
+.card,.project,.learning,.journey-row,.btn,.skill-box{transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease}
+.card:hover,.project:hover,.learning:hover{transform:translateY(-5px);box-shadow:0 24px 70px rgba(0,0,0,.25);border-color:rgba(99,169,255,.3)}
+@media(max-width:900px){
+ .hero{grid-template-columns:1fr;min-height:auto;padding-top:60px}.hero-visual{min-height:350px}
+ .about-grid,.learning-grid{grid-template-columns:1fr}.skill-grid{grid-template-columns:repeat(2,1fr)}.project-grid{grid-template-columns:1fr}
+ .journey-row{grid-template-columns:52px 1fr}.journey-status{grid-column:2;border-left:0;border-top:1px solid var(--line);padding:15px 0 0}
+ .journey-row:before{left:25px}
+ .quote{display:none}
+}
+@media(max-width:700px){
+ .container{width:min(100% - 26px,1180px)}.navlinks{display:none;position:absolute;top:76px;left:13px;right:13px;padding:14px;background:#091222;border:1px solid var(--line);border-radius:13px;flex-direction:column;gap:0}
+ .navlinks.open{display:flex}.navlinks a{padding:12px;width:100%}.navlinks a.active:after{display:none}.menu{display:block}
+ .resume{padding:9px 11px;font-size:11px}.hero h1{font-size:56px;letter-spacing:-3px}.hero-copy{font-size:14px}
+ .hero-visual{min-height:300px}.code-window{transform:none}.orbit{width:320px;height:320px}
+ .skill-grid{grid-template-columns:1fr}.section{padding:58px 0}h2{font-size:28px}
+ .journey-row{padding:22px 18px}.journey-intro{padding:22px 18px}
+ .contact{padding:25px;align-items:flex-start;flex-direction:column}.footer-inner{flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+/* portfolio v7 project details */
+
+.project-grid{grid-template-columns:repeat(2,1fr)}
+.project{min-height:330px}
+.project.featured{position:relative;overflow:hidden}
+.project.featured:before{
+ content:"";position:absolute;left:0;top:0;width:100%;height:2px;
+ background:linear-gradient(90deg,var(--blue),var(--violet));opacity:.75
+}
+.project-bullets{display:grid;gap:7px;margin-top:15px;padding-left:0;list-style:none}
+.project-bullets li{position:relative;padding-left:15px;color:#a8b5c8;font-size:12px;line-height:1.55}
+.project-bullets li:before{content:"";position:absolute;left:0;top:.62em;width:5px;height:5px;border-radius:50%;background:#6daaff;box-shadow:0 0 9px rgba(109,170,255,.35)}
+.project .tags{margin-top:18px}
+.project-main{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mini-projects{margin-top:18px}
+.mini-projects .project{min-height:0}
+.mini-projects h3{font-size:16px}
+.mini-projects p{font-size:12px}
+@media(max-width:900px){.project-grid,.project-main{grid-template-columns:1fr}}
+
+</style>
+
+<style id="software-developer-identity-style">
+.hero-specialties{
+  margin:10px 0 18px;
+  font-size:1rem;
+  font-weight:600;
+  letter-spacing:.02em;
+  color:#9db8ff;
+}
+</style>
+
+
+<style id="contact-button-style">
+.contact-actions .btn span{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin-right:7px;
+  font-size:1.05em;
+}
+</style>
+
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header>
+<nav class="container">
+ <a href="#home" class="logo">Salman<b>.</b></a>
+ <div class="navlinks" id="nav">
+  <a href="#home" class="active">Home</a><a href="#about">About</a><a href="#skills">Skills</a>
+  <a href="#learning">Growth</a><a href="#projects">Projects</a><a href="#journey">Journey</a><a href="#contact">Contact</a>
+ </div>
+ <div style="display:flex;align-items:center;gap:9px">
+  <a class="resume" href="Salman_Ali_Resume.pdf" download="Salman_Ali_Resume.pdf">↓ Resume</a>
+  <button class="menu" id="menu" aria-label="Open menu">☰</button>
+ </div>
+</nav>
+</header>
+
+<main>
+<p class="hero-specialties">Java • Backend • Full-Stack • Databases • AI</p>
+<section id="home" class="container hero">
+ <div class="reveal">
+  <div class="eyebrow">Software Developer · B.Tech CS (AI-ML)</div>
+  <h1>Building<br><span class="gradient">with Java.</span></h1>
+  <div class="role">Backend Developer <span>focused on strong fundamentals.</span></div>
+  <p class="hero-copy">
+   I build backend applications with Java and Spring Boot, design REST APIs, work with relational databases,
+   and apply secure, layered architecture to practical software projects.
+  </p>
+  <div class="actions">
+   <a class="btn primary" href="#projects">Explore My Work →</a>
+   <a class="btn" href="mailto:salman.9651.ali@gmail.com">Let's Connect</a>
+  </div>
+  <div class="socials">
+   <a href="https://github.com/SalmanAli-sketch" target="_blank" rel="noopener">GitHub ↗</a>
+   <a href="https://www.linkedin.com/in/salman-ali-36390330a" target="_blank" rel="noopener">LinkedIn ↗</a>
+   <a rel="noopener" target="_blank" href="https://mail.google.com/mail/?view=cm&fs=1&to=salman.9651.ali@gmail.com">Email ↗</a>
+  </div>
+ </div>
+
+ <div class="hero-visual reveal">
+  <div class="orbit"></div>
+  <div class="code-window">
+   <div class="window-bar"><i class="window-dot"></i><i class="window-dot"></i><i class="window-dot"></i><span class="window-title">salman-backend.java</span></div>
+   <div class="code">
+    <div><span class="comment">// building one layer at a time</span></div>
+    <div><span class="key">class</span> <span class="value">BackendDeveloper</span> {</div>
+    <div>&nbsp;&nbsp;<span class="key">String</span> focus = <span class="string">"Java"</span>;</div>
+    <div>&nbsp;&nbsp;<span class="key">String</span> database = <span class="string">"PostgreSQL"</span>;</div>
+    <div>&nbsp;&nbsp;<span class="key">String</span> next = <span class="string">"Spring Boot"</span>;</div>
+    <div>&nbsp;&nbsp;<span class="key">boolean</span> build = <span class="value">true</span>;</div>
+    <div>&nbsp;&nbsp;<span class="key">boolean</span> learn = <span class="value">true</span>;</div>
+    <div>&nbsp;&nbsp;<span class="key">void</span> <span class="value">keepImproving</span>() {</div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;build(); solve(); learn();</div>
+    <div>&nbsp;&nbsp;}</div><div>}</div>
+   </div>
+  </div>
+  <div class="visual-badge badge-a">☕ Core Java</div>
+  <div class="visual-badge badge-b">⚙ Spring →</div>
+  <div class="visual-badge badge-c">● Always learning</div>
+ </div>
+</section>
+
+<section id="about" class="container section reveal">
+ <div class="section-head">
+  <div><div class="kicker">Profile</div><h2>About Me</h2><div class="under"></div></div>
+  <p class="section-note">Java backend development, practical system building and a growing focus on scalable application architecture.</p>
+ </div>
+ <div class="about-grid">
+  <article class="card about-card">
+   <p>I'm a <b>B.Tech Computer Science (AI-ML)</b> student with practical experience in <b>backend development using Java and Spring Boot</b>.</p>
+   <p>I build REST APIs, work with Spring Security and JWT, and manage relational data using JPA, Hibernate, MySQL and PostgreSQL. I also work with multithreading, third-party API integration, layered architecture and Docker.</p>
+   <p>My goal is to build scalable backend applications and gradually integrate AI capabilities into real-world software solutions.</p>
+  </article>
+  <article class="card fact-list">
+   <div class="fact"><strong>Education</strong><span>B.Tech CSE (AI &amp; ML) · 2023–2027</span></div>
+   <div class="fact"><strong>Primary Focus</strong><span>Java &amp; Spring Boot Backend Development</span></div>
+   <div class="fact"><strong>Backend</strong><span>REST APIs · Spring Security · JWT · JPA · Hibernate</span></div>
+   <div class="fact"><strong>Data</strong><span>MySQL · PostgreSQL · MongoDB</span></div>
+   <div class="fact"><strong>Architecture</strong><span>MVC · Layered Architecture · Design Patterns · API Design</span></div>
+  </article>
+ </div>
+</section>
+
+<section id="skills" class="container section reveal">
+ <div class="section-head">
+  <div><div class="kicker">Toolkit</div><h2>Technical Skills</h2><div class="under"></div></div>
+  <p class="section-note">A portfolio view of my backend foundation, current backend enhancement, and the technologies planned for the next stage.</p>
+ </div>
+ <div class="card skills-wrap">
+  <div class="skill-grid">
+   <div class="skill-box"><h3>Languages</h3><div class="skill-list"><span>Java</span><span>C++</span></div></div>
+   <div class="skill-box"><h3>Core Java</h3><div class="skill-list"><span>OOP</span><span>Multithreading</span><span>Java 8</span><span>Java Streams</span><span>Collections</span><span>Exception Handling</span></div></div>
+   <div class="skill-box"><h3>Backend</h3><div class="skill-list"><span>Spring Boot</span><span>Spring MVC</span><span>Spring Data JPA</span><span>Hibernate</span><span>REST APIs</span><span>Spring Security</span><span>JWT</span><span>Microservices</span></div></div>
+   <div class="skill-box"><h3>Databases</h3><div class="skill-list"><span>MySQL</span><span>PostgreSQL</span><span>MongoDB</span></div></div>
+   <div class="skill-box"><h3>Architecture</h3><div class="skill-list"><span>MVC</span><span>Layered Architecture</span><span>Design Patterns</span><span>API Design</span></div></div>
+   <div class="skill-box"><h3>Testing &amp; DevOps</h3><div class="skill-list"><span>JUnit</span><span>Mockito</span><span>Docker</span><span>CI/CD</span><span>Vercel</span></div></div>
+   <div class="skill-box"><h3>AI &amp; Integration</h3><div class="skill-list"><span>AI API Integration</span><span>Third-Party APIs</span></div></div>
+   <div class="skill-box"><h3>Version Control</h3><div class="skill-list"><span>Git</span><span>GitHub</span></div></div>
+   <div class="skill-box"><h3>Tools</h3><div class="skill-list"><span>Maven</span><span>Postman</span><span>IntelliJ IDEA</span><span>VS Code</span><span>MySQL Workbench</span><span>pgAdmin</span><span>MongoDB Compass</span></div></div>
+  </div>
+ </div>
+</section>
+
+<section id="learning" class="container section reveal">
+ <div class="section-head">
+  <div><div class="kicker">Growth</div><h2>Skill Development</h2><div class="under"></div></div>
+  <p class="section-note">Deepening backend engineering while expanding into production architecture and AI-integrated applications.</p>
+ </div>
+ <div class="learning-grid">
+  <article class="card learning current">
+   <div class="learning-top"><span class="kicker" style="margin:0">Skill Enhancement</span><span class="status">ACTIVE FOCUS</span></div>
+   <h3>Strengthening Backend Engineering</h3>
+   <p>Building stronger capability across Spring Boot, REST APIs, Spring Security, JWT, JPA/Hibernate, testing and service architecture through project work.</p>
+   <div class="tags"><span>Spring Boot</span><span>REST APIs</span><span>Spring Security</span><span>JWT</span><span>JPA</span><span>Hibernate</span></div>
+   <div class="focus"><div class="focus-head"><span>Current direction</span><span>Production-ready backend</span></div><div class="bar"><span></span></div></div>
+  </article>
+  <article class="card learning">
+   <div class="learning-top"><span class="kicker" style="margin:0">Expansion</span><span class="status" style="color:#78b3ff;border-color:rgba(99,169,255,.25)">NEXT FOCUS</span></div>
+   <h3>Deployment, Architecture &amp; AI</h3>
+   <p>Expanding toward Docker, CI/CD, cloud deployment, deeper microservices and practical AI API integration.</p>
+   <div class="roadmap">
+    <div><i></i>Docker &amp; containerization</div>
+    <div><i></i>CI/CD &amp; deployment</div>
+    <div><i></i>Microservices architecture</div>
+    <div><i></i>Frontend development — HTML, CSS, JavaScript &amp; React</div>
+    <div><i></i>AI API integration</div>
+    <div><i></i>Scalable backend systems</div>
+   </div>
+   <div class="tags" style="margin-top:20px">
+    <span>HTML</span><span>CSS</span><span>JavaScript</span><span>React</span><span>Docker</span><span>AWS</span>
+   </div>
+  </article>
+ </div>
+</section>
+
+<section id="projects" class="container section reveal">
+ <div class="section-head">
+  <div><div class="kicker">Selected Work</div><h2>Featured Projects</h2><div class="under"></div></div>
+  <p class="section-note">A closer look at the backend systems and application projects represented in my GitHub portfolio.</p>
+ </div>
+
+ <div class="project-grid">
+  <article class="card project featured">
+   <div class="project-label"><span class="project-num">01 / FEATURED</span><span class="project-type">FINANCIAL PLATFORM</span></div>
+   <h3>Financial Trading Learning &amp; Simulation Platform</h3>
+   <p>A financial learning platform where users study stock-market concepts and practice trading with virtual money.</p>
+   <ul class="project-bullets">
+    <li>Built modules for users, virtual wallets, stocks, buy/sell operations, portfolios, transactions, lessons and performance tracking.</li>
+    <li>Created REST APIs for trades, balances, portfolios, transactions and learning content using Spring Data JPA and Hibernate.</li>
+    <li>Implemented scheduled multithreaded processing to update simulated stock prices every 5 seconds and integrated external market-data APIs.</li>
+    <li>Containerized backend services with Docker and configured CI/CD deployment workflows.</li>
+   </ul>
+   <div class="tags"><span>Spring Boot</span><span>Microservices</span><span>Spring Data JPA</span><span>PostgreSQL</span><span>REST APIs</span><span>Multithreading</span><span>Docker</span><span>CI/CD</span></div>
+   <a class="project-link" href="https://github.com/SalmanAli-sketch/Financial-Trading-Learning-Simulation-Platform" target="_blank" rel="noopener">View Repository ↗</a>
+  </article>
+
+  <article class="card project featured">
+   <div class="project-label"><span class="project-num">02 / BACKEND</span><span class="project-type">SECURE API</span></div>
+   <h3>Banking Transaction System</h3>
+   <p>A secure banking backend designed around account operations, financial transactions and persistent transaction history.</p>
+   <ul class="project-bullets">
+    <li>Developed account, deposit, withdrawal, fund-transfer and transaction-history workflows.</li>
+    <li>Built REST APIs with Spring Boot, Spring Data JPA and MySQL for persistent data management.</li>
+    <li>Implemented Spring Security and JWT authentication for protected API access.</li>
+    <li>Applied Controller–Service–Repository layered architecture for maintainable backend design.</li>
+   </ul>
+   <div class="tags"><span>Spring Boot</span><span>Spring Data JPA</span><span>MySQL</span><span>Spring Security</span><span>JWT</span><span>REST APIs</span></div>
+   <a class="project-link" href="https://github.com/SalmanAli-sketch/online-banking-transaction-system/tree/main/Online-banking-transaction-system-java--main" target="_blank" rel="noopener">View Repository ↗</a>
+  </article>
+
+  <article class="card project featured">
+   <div class="project-label"><span class="project-num">03 / AI INTEGRATION</span><span class="project-type">FINANCIAL AI</span></div>
+   <h3>AI-Powered Financial Assistant</h3>
+   <p>A backend financial assistant combining application financial data with an external AI/LLM service for contextual responses.</p>
+   <ul class="project-bullets">
+    <li>Created APIs to receive user queries, retrieve relevant financial data and process AI requests.</li>
+    <li>Integrated an external AI/LLM service into the backend workflow.</li>
+    <li>Stored and retrieved financial data using Spring Data JPA and PostgreSQL.</li>
+   </ul>
+   <div class="tags"><span>Spring Boot</span><span>REST APIs</span><span>Spring Data JPA</span><span>PostgreSQL</span><span>AI API Integration</span></div>
+<a class="project-link" href="https://github.com/SalmanAli-sketch/AI-Powered-Financial-Assistant" target="_blank" rel="noopener">View Repository ↗</a>
+  </article>
+ </div>
+
+ <div class="mini-projects">
+  <div class="section-head" style="margin:28px 0 14px">
+   <div><div class="kicker">Additional Work</div><h2 style="font-size:25px">Mini Projects</h2></div>
+  </div>
+  <div class="project-grid">
+   <article class="card project">
+    <div class="project-label"><span class="project-num">04</span><span class="project-type">CRUD API</span></div>
+    <h3>Student Management System</h3>
+    <p>Student registration and CRUD APIs with MySQL persistence and Controller–Service–Repository architecture.</p>
+    <div class="tags"><span>Spring Boot</span><span>Spring Data JPA</span><span>MySQL</span><span>REST APIs</span></div>
+    <a class="project-link" href="https://github.com/SalmanAli-sketch/Student-Management-System/tree/main/java-student-management-system-main" target="_blank" rel="noopener">View Repository ↗</a>
+   </article>
+   <article class="card project">
+    <div class="project-label"><span class="project-num">05</span><span class="project-type">MANAGEMENT API</span></div>
+    <h3>Hospital Management System</h3>
+    <p>APIs for patients, doctors, appointments and hospital records with JPA/Hibernate entity relationships and layered architecture.</p>
+    <div class="tags"><span>Spring Boot</span><span>Spring Data JPA</span><span>MySQL</span><span>REST APIs</span></div>
+    <a class="project-link" href="https://github.com/SalmanAli-sketch/Hospital-Management-System" target="_blank" rel="noopener">View Repository ↗</a>
+   </article>
+  </div>
+ </div>
+</section>
+
+<section id="journey" class="container section reveal">
+ <div class="section-head">
+  <div><div class="kicker">Progression</div><h2>My Development Journey</h2><div class="under"></div></div>
+  <p class="section-note">From Core Java and databases to Spring-based backend systems, secure APIs and production-oriented development.</p>
+ </div>
+ <div class="journey">
+  <div class="journey-intro">
+   <p>A structured path built around practical projects, stronger backend architecture and continuous expansion of the technologies I can use to build real software.</p>
+   <div class="quote"><b>My approach</b>Consistency today builds the expertise of tomorrow.</div>
+  </div>
+  <article class="journey-row">
+   <div class="journey-icon">01</div>
+   <div class="journey-main"><div class="journey-meta"><span class="journey-stage">Foundation</span></div><h3>Core Java &amp; Problem Solving</h3><p>OOP, Collections, exception handling, generics, multithreading, Java 8, Java Streams and C++/DSA foundations.</p><div class="tags"><span>Java</span><span>OOP</span><span>Collections</span><span>Multithreading</span><span>Java 8</span></div></div>
+   <div class="journey-status"><b class="status-done">● Completed</b><div class="checks"><span class="done">✓ Core Java</span><span class="done">✓ Collections &amp; Streams</span><span class="done">✓ Multithreading</span></div></div>
+  </article>
+  <article class="journey-row">
+   <div class="journey-icon">02</div>
+   <div class="journey-main"><div class="journey-meta"><span class="journey-stage">Data &amp; Persistence</span></div><h3>SQL, Databases &amp; JDBC</h3><p>Database concepts and application persistence using MySQL, PostgreSQL, MongoDB and JDBC.</p><div class="tags"><span>MySQL</span><span>PostgreSQL</span><span>MongoDB</span><span>JDBC</span></div></div>
+   <div class="journey-status"><b class="status-done">● Completed</b><div class="checks"><span class="done">✓ SQL &amp; relational databases</span><span class="done">✓ PostgreSQL &amp; MySQL</span><span class="done">✓ JDBC integration</span></div></div>
+  </article>
+  <article class="journey-row">
+   <div class="journey-icon" style="color:#b69dff;border-color:rgba(155,124,255,.4)">03</div>
+   <div class="journey-main"><div class="journey-meta"><span class="journey-stage" style="color:#aa94ff">Backend Engineering</span></div><h3>Spring Boot, REST &amp; Security</h3><p>Developing backend applications with Spring Boot, Spring MVC, Spring Data JPA, Hibernate, REST APIs, Spring Security and JWT.</p><div class="tags"><span>Spring Boot</span><span>Spring MVC</span><span>JPA</span><span>Hibernate</span><span>REST APIs</span><span>JWT</span></div></div>
+   <div class="journey-status"><b class="status-progress">● Active Development</b><div class="checks"><span class="active">● Secure API development</span><span class="active">● Layered architecture</span><span class="active">● Testing &amp; integration</span></div></div>
+  </article>
+  <article class="journey-row">
+   <div class="journey-icon" style="color:#78b3ff">04</div>
+   <div class="journey-main"><div class="journey-meta"><span class="journey-stage">Scale &amp; Production</span></div><h3>Microservices, Docker &amp; AI Integration</h3><p>Expanding backend systems toward microservices, containerization, CI/CD, third-party APIs and practical AI integration.</p><div class="tags"><span>Microservices</span><span>Docker</span><span>CI/CD</span><span>AI APIs</span><span>Third-Party APIs</span><span>HTML</span><span>CSS</span><span>JavaScript</span><span>React</span></div></div>
+   <div class="journey-status"><b class="status-next">◷ Expanding</b><div class="checks"><span>○ Service architecture</span><span>○ Deployment workflows</span><span>○ AI-integrated applications</span></div></div>
+  </article>
+ </div>
+</section>
+
+<section id="contact" class="container section reveal">
+ <div class="card contact">
+  <div><div class="kicker">Let's build</div><h2>Open to Internships &amp; Opportunities</h2><p>I'm interested in learning, collaborating and contributing to real-world software projects.</p></div>
+  
+<div class="contact-actions">
+  <a class="btn primary" href="https://mail.google.com/mail/?view=cm&fs=1&to=salman.9651.ali@gmail.com" target="_blank" rel="noopener">
+    <span aria-hidden="true">✉</span> Email
+  </a>
+  <a class="btn secondary" href="https://wa.me/919651117946" target="_blank" rel="noopener">
+    <span aria-hidden="true">◉</span> WhatsApp
+  </a>
+</div>
+
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="container footer-inner">
+  <div><strong style="color:#dfe7f4">Salman Ali</strong><br>Backend Developer · Java · Spring Boot · Building practical systems.</div>
+  <div class="footer-links"><a href="https://github.com/SalmanAli-sketch" target="_blank">GitHub</a><a href="https://www.linkedin.com/in/salman-ali-36390330a" target="_blank">LinkedIn</a><a rel="noopener" target="_blank" href="https://mail.google.com/mail/?view=cm&fs=1&to=salman.9651.ali@gmail.com">Email</a></div>
+  <div>© 2026 Salman Ali</div>
+ </div>
+</footer>
+<button id="top" aria-label="Back to top">↑</button>
+
+<script>
+const nav=document.getElementById("nav"),menu=document.getElementById("menu");
+menu.addEventListener("click",()=>nav.classList.toggle("open"));
+document.querySelectorAll(".navlinks a").forEach(a=>a.addEventListener("click",()=>nav.classList.remove("open")));
+
+const progress=document.getElementById("progress"),topBtn=document.getElementById("top");
+function onScroll(){
+ const max=document.documentElement.scrollHeight-window.innerHeight;
+ progress.style.width=(max>0?window.scrollY/max*100:0)+"%";
+ topBtn.style.display=window.scrollY>550?"grid":"none";
+ let current="home";
+ document.querySelectorAll("main section[id]").forEach(s=>{if(window.scrollY>=s.offsetTop-150)current=s.id});
+ document.querySelectorAll(".navlinks a").forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+current));
+}
+window.addEventListener("scroll",onScroll,{passive:true});onScroll();
+topBtn.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
+
+const observer=new IntersectionObserver(entries=>{
+ entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("show");observer.unobserve(e.target)}})
+},{threshold:.1});
+document.querySelectorAll(".reveal").forEach(e=>observer.observe(e));
+
+document.addEventListener("mousemove",e=>{
+ document.documentElement.style.setProperty("--mx",e.clientX+"px");
+ document.documentElement.style.setProperty("--my",e.clientY+"px");
+},{passive:true});
+</script>
+
+</body>
+</html>
